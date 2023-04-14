@@ -9,6 +9,7 @@ export default {
           'system-ui',
           '-apple-system',
           'BlinkMacSystemFont',
+          '"Roboto"',
           '"Segoe UI"',
           '"Helvetica Neue"',
           '"Noto Sans"',
@@ -17,7 +18,6 @@ export default {
       }
     },
     container: {
-      padding: '1rem',
       center: true
     }
   },
