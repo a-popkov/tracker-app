@@ -4,10 +4,10 @@
     <div></div>
   </main>
 
-  <TheNavigation />
+  <TheNav />
 </template>
 
 <script setup>
 import TheHeader from './components/TheHeader.vue'
-import TheNavigation from './components/TheNavigation.vue'
+import TheNav from './components/TheNav.vue'
 </script>
