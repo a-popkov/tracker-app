@@ -6,7 +6,7 @@
         :key="page"
         :href="`#${page}`"
         :class="{ 'bg-gray-200 pointer-events-none': page === currentPage }"
-        @click="currentPage = page"
+        @click="emit('navigate', page)"
       >
         <component :is="icon" class="h-8 w-8" /> {{ page }}
         <!-- <ph-clock v-if="page === 'выполняемые'" class="h-8 w-8" />
@@ -18,12 +18,17 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { PhClock, PhListBullets, PhChartBar } from '@phosphor-icons/vue'
-const navItems = { выполняемые: PhClock, активные: PhListBullets, прогресс: PhChartBar }
 import NavItem from './NavItem.vue'
+import { PhClock, PhListBullets, PhChartBar } from '@phosphor-icons/vue'
+import { PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS } from '../constants'
 
-const currentPage = ref('выполняемые')
+defineProps(['currentPage'])
 
-// export default {}
+const emit = defineEmits(['navigate'])
+
+const navItems = {
+  [PAGE_TIMELINE]: PhClock,
+  [PAGE_ACTIVITIES]: PhListBullets,
+  [PAGE_PROGRESS]: PhChartBar
+}
 </script>
