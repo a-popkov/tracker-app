@@ -1,5 +1,5 @@
 <template>
-  <a class="text-sm" href="#">
+  <a class="text-sm" :href="`#${PAGE_PROGRESS}`">
     <span v-if="true" class="inline-flex items-center gap-1">
       День завершен!
       <PhCheckCircle weight="fill" class="h-5 w-5 text-green-500" />
@@ -24,4 +24,5 @@
 
 <script setup>
 import { PhCheckCircle, PhSpinner } from '@phosphor-icons/vue'
+import { PAGE_PROGRESS } from '../constants'
 </script>
