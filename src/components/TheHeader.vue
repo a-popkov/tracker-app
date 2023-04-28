@@ -1,9 +1,7 @@
 <template>
-  <header class="sticky top-0 z-20 border-b p-3 bg-[#fdfdfd]">
-    <div class="container flex items-center justify-between">
-      <TheLogo @click="emit('goToTimeline')" />
-      <TheHeaderProgress @click="emit('goToProgress')" />
-    </div>
+  <header class="sticky top-0 z-20 flex items-center justify-between border-b p-3 bg-[#fdfdfd]">
+    <TheLogo @click="emit('goToTimeline')" />
+    <TheHeaderProgress @click="emit('goToProgress')" />
   </header>
 </template>
 

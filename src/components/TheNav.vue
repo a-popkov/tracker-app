@@ -9,9 +9,6 @@
         @click="emit('navigate', page)"
       >
         <component :is="icon" class="h-8 w-8" /> {{ page }}
-        <!-- <ph-clock v-if="page === 'выполняемые'" class="h-8 w-8" />
-          <ph-list-bullets v-else-if="page === 'активные'" class="h-8 w-8" />
-          <ph-chart-bar v-else class="h-8 w-8" /> {{ page }} -->
       </NavItem>
     </ul>
   </nav>
@@ -21,7 +18,15 @@
 import { NAV_ITEMS } from '../constants'
 import NavItem from './NavItem.vue'
 
-defineProps(['currentPage'])
+defineProps({
+  currentPage: {
+    required: true,
+    type: String,
+    validator (currentPage) {
+      return Object.keys(NAV_ITEMS).includes(currentPage)
+    }
+  }
+})
 
 const emit = defineEmits(['navigate'])
 </script>
