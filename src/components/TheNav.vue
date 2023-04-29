@@ -8,7 +8,8 @@
         :class="{ 'bg-gray-200 pointer-events-none': page === currentPage }"
         @click="emit('navigate', page)"
       >
-        <component :is="icon" class="h-8 w-8" /> {{ page }}
+        <component :is="icon" class="h-8 w-8" />
+        {{ page }}
       </NavItem>
     </ul>
   </nav>
@@ -16,15 +17,14 @@
 
 <script setup>
 import { NAV_ITEMS } from '../constants'
+import { isPageValid } from '../validators'
 import NavItem from './NavItem.vue'
 
 defineProps({
   currentPage: {
     required: true,
     type: String,
-    validator (currentPage) {
-      return Object.keys(NAV_ITEMS).includes(currentPage)
-    }
+    validator: isPageValid
   }
 })
 
