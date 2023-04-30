@@ -1,5 +1,5 @@
 <template>
-  <TheHeader @go-to-timeline="goTo(PAGE_TIMELINE)" @go-to-progress="goTo(PAGE_PROGRESS)" />
+  <TheHeader @navigate="goTo($event)" />
   <main class="flex flex-col flex-grow ">
     <TheTimeline v-show="currentPage === PAGE_TIMELINE" :timeline-items="timelineItems" />
     <TheActivities v-show="currentPage === PAGE_ACTIVITIES" />
