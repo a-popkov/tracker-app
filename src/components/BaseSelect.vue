@@ -20,17 +20,14 @@
 <script setup>
 import BaseButton from './BaseButton.vue'
 import { PhX } from '@phosphor-icons/vue'
+import { validateSelectOptions } from '../validators'
 
 defineProps({
   selected: Number,
   options: {
     required: true,
     type: Array,
-    validator (options) {
-      return options.every(
-        ({ value, label }) => typeof value === 'number' && typeof label === 'string'
-      )
-    }
+    validator: validateSelectOptions
   },
   placeholder: {
     required: true,
