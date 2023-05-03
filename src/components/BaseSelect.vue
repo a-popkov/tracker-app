@@ -7,7 +7,7 @@
       class="w-full truncate rounded bg-gray-100 py-1 px-2 text-xl"
       @change="emit('select', +$event.target.value)"
     >
-      <option selected disabled value="">{{ placeholder }}</option>
+      <option :selected="isNotSelected" disabled value="">{{ placeholder }}</option>
       <option
         v-for="{ value, label } in options"
         :key="value"
@@ -21,11 +21,12 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import BaseButton from './BaseButton.vue'
 import { PhX } from '@phosphor-icons/vue'
-import { validateSelectOptions } from '../validators'
+import { validateSelectOptions, isUndefinedOrNull, isNumberOrNull } from '../validators'
 
-defineProps({
+const props = defineProps({
   selected: Number,
   options: {
     required: true,
@@ -39,8 +40,8 @@ defineProps({
 })
 
 const emit = defineEmits({
-  select (value) {
-    return typeof value === 'number'
-  }
+  select: isNumberOrNull
 })
+
+const isNotSelected = computed(() => isUndefinedOrNull(props.selected))
 </script>
