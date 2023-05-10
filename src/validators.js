@@ -1,4 +1,4 @@
-import { BUTTON_TYPES, NAV_ITEMS, HOURS_IN_DAY, MIDNIGHT_HOUR, BUTTON_TYPES } from './constants'
+import { BUTTON_TYPES, NAV_ITEMS, HOURS_IN_DAY, MIDNIGHT_HOUR } from './constants'
 
 export function isPageValid (page) {
   return Object.keys(NAV_ITEMS).includes(page)
@@ -45,7 +45,7 @@ export function isNumberOrNull (value) {
 }
 
 function isSelectOptionValid ({ value, label }) {
-  return isNumber(value) && isString(label)
+  return isNumber(value) && isNotEmptyString(label)
 }
 
 function isBetween (value, start, end) {

@@ -5,8 +5,8 @@
     <slot></slot>
   </button>
 </template>
+
 <script setup>
-import { BUTTON_TYPE_NEUTRAL, BUTTON_TYPE_DANGER } from '../constants'
 import { isButtonTypeValid } from '../validators'
 
 defineProps({
@@ -16,6 +16,10 @@ defineProps({
     validator: isButtonTypeValid
   }
 })
+</script>
+
+<script>
+import { BUTTON_TYPE_NEUTRAL, BUTTON_TYPE_DANGER } from '../constants'
 
 const typeClasses = {
   [BUTTON_TYPE_NEUTRAL]: 'bg-gray-100 enabled:hover:bg-gray-200',
