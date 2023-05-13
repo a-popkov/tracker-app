@@ -1,7 +1,7 @@
 <template>
   <div class="flex gap-2">
-    <BaseButton @click="emit('select', null)">
-      <Ph-X class="h-8" />
+    <BaseButton :type="BUTTON_TYPE_NEUTRAL" @click="emit('select', null)">
+      <Ph-X class="w-6 h-6" />
     </BaseButton>
     <select
       class="w-full truncate rounded bg-gray-100 py-1 px-2 text-xl"
@@ -23,6 +23,7 @@
 <script setup>
 import { computed } from 'vue'
 import BaseButton from './BaseButton.vue'
+import { BUTTON_TYPE_NEUTRAL } from '../constants'
 import { PhX } from '@phosphor-icons/vue'
 import { validateSelectOptions, isUndefinedOrNull, isNumberOrNull } from '../validators'
 

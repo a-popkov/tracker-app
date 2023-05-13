@@ -2,7 +2,7 @@
   <li class="flex flex-col gap-2 p-4">
     <div class="flex items-center gap-2">
       <BaseButton :type="BUTTON_TYPE_DANGER" @click="emit('delete')">
-        <PhTrash class="h-8" />
+        <PhTrash class="w-6 h-6" />
       </BaseButton>
       <span class="truncate text-xl">{{ activity }}</span>
     </div>

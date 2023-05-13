@@ -9,6 +9,7 @@
     <TheActivities
       v-show="currentPage === PAGE_ACTIVITIES"
       :activities="activities"
+      @create-activity="createActivity"
       @delete-activity="deleteActivity"
     />
     <TheProgress v-show="currentPage === PAGE_PROGRESS" />
@@ -34,6 +35,10 @@ const timelineItems = generateTimelineItems()
 
 function goTo (page) {
   currentPage.value = page
+}
+
+function createActivity (activity) {
+  activities.value.push(activity)
 }
 
 function deleteActivity (activity) {
