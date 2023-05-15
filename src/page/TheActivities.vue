@@ -8,29 +8,14 @@
         @delete="emit('deleteActivity', activity)"
       />
     </ul>
-    <form
-      @submit.prevent="emit('createActivity', newActivity)"
-      class="sticky bottom-[57px] flex gap-2 border-t p-4 bg-white"
-    >
-      <input
-        type="text"
-        placeholder="Activity name"
-        class="w-full rounded border px-4 text-xl"
-        :value="newActivity"
-        @input="newActivity = $event.target.value"
-      />
-      <BaseButton>
-        <PhPlus class="w-6 h-6" />
-      </BaseButton>
-    </form>
+    <TheActivityForm @submit="emit('createActivity', $event)" />
   </div>
 </template>
 
 <script setup>
 import ActivityItem from '../components/ActivityItem.vue'
-import BaseButton from '../components/BaseButton.vue'
+import TheActivityForm from '../components/TheActivityForm.vue'
 import { isActivityValid, validateActivities } from '../validators'
-import { PhPlus } from '@phosphor-icons/vue'
 
 defineProps({
   activities: {
@@ -44,6 +29,4 @@ const emit = defineEmits({
   createActivity: isActivityValid,
   deleteActivity: isActivityValid
 })
-
-let newActivity = ''
 </script>
