@@ -9,6 +9,7 @@ export const BUTTON_TYPES = [BUTTON_TYPE_PRIMARY, BUTTON_TYPE_DANGER, BUTTON_TYP
 export const PAGE_TIMELINE = 'timeline'
 export const PAGE_ACTIVITIES = 'activity'
 export const PAGE_PROGRESS = 'progress'
+export const SECOND_IN_HOUR = 3600
 export const HOURS_IN_DAY = 24
 export const MIDNIGHT_HOUR = 0
 
