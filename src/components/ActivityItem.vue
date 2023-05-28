@@ -4,7 +4,7 @@
       <BaseButton :type="BUTTON_TYPE_DANGER" @click="emit('delete')">
         <PhTrash class="w-6 h-6" />
       </BaseButton>
-      <span class="truncate text-xl">{{ activity }}</span>
+      <span class="truncate text-xl">{{ activity.name }}</span>
     </div>
     <div>
       <BaseSelect
@@ -29,12 +29,12 @@ import { isActivityValid, isUndefined } from '../validators'
 defineProps({
   activity: {
     required: true,
-    type: String,
+    type: Object,
     validator: isActivityValid
   }
 })
 
-const secondsToComplete = ref(null)
+const secondsToComplete = ref(0)
 
 const emit = defineEmits({
   delete: isUndefined

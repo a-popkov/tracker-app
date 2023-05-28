@@ -4,9 +4,9 @@
       type="text"
       placeholder="Activity name"
       class="w-full rounded border px-4 text-xl"
-      v-model="activity"
+      v-model="name"
     />
-    <BaseButton :disabled="activity.trim() === ''">
+    <BaseButton :disabled="name.trim() === ''">
       <PhPlus class="w-6 h-6" />
     </BaseButton>
   </form>
@@ -16,15 +16,20 @@
 import { nextTick, ref } from 'vue'
 import { PhPlus } from '@phosphor-icons/vue'
 import BaseButton from './BaseButton.vue'
+import { id } from '../function'
 import { isActivityValid } from '../validators'
 
-const activity = ref('')
+const name = ref('')
 const emit = defineEmits({ submit: isActivityValid })
 
 async function submit () {
-  emit('submit', activity.value)
+  emit('submit', {
+    id: id(),
+    name: name.value,
+    secondsToComplete: 0
+  })
 
-  activity.value = ''
+  name.value = ''
 
   await nextTick(() => {
     window.scrollTo(0, document.body.scrollHeight)

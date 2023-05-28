@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import TheHeader from './components/TheHeader.vue'
 import TheNav from './components/TheNav.vue'
 import TheTimeline from './page/TheTimeline.vue'
@@ -27,7 +27,6 @@ import TheActivities from './page/TheActivities.vue'
 import TheProgress from './page/TheProgress.vue'
 import { PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS } from './constants'
 import {
-  id,
   normalizePageHash,
   generateTimelineItems,
   generateActivitySelectOptions,
@@ -36,19 +35,15 @@ import {
 
 const currentPage = ref(normalizePageHash())
 const activities = ref(generateActivities())
-const activitySelectOptions = generateActivitySelectOptions(activities.value)
+const activitySelectOptions = computed(() => generateActivitySelectOptions(activities.value))
 const timelineItems = generateTimelineItems()
 
 function goTo (page) {
   currentPage.value = page
 }
 
-function createActivity (name) {
-  activities.value.push({
-    id: id(),
-    name,
-    secondsToComplete: 0
-  })
+function createActivity (activity) {
+  activities.value.push(activity)
 }
 
 function deleteActivity (activity) {
