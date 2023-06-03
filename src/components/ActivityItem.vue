@@ -11,8 +11,8 @@
         class="font-mono"
         placeholder="h:mm"
         :options="PERIOD_SELECT_OPTIONS"
-        :selected="secondsToComplete"
-        @select="secondsToComplete = $event"
+        :selected="activity.secondsToComplete || null"
+        @select="emit('secondsToComplete', $event || 0)"
       />
     </div>
   </li>
@@ -20,11 +20,10 @@
 
 <script setup>
 import { PhTrash } from '@phosphor-icons/vue'
-import { ref } from 'vue'
 import BaseButton from './BaseButton.vue'
 import BaseSelect from './BaseSelect.vue'
 import { PERIOD_SELECT_OPTIONS, BUTTON_TYPE_DANGER } from '../constants'
-import { isActivityValid, isUndefined } from '../validators'
+import { isActivityValid, isUndefined, isNumber } from '../validators'
 
 defineProps({
   activity: {
@@ -34,9 +33,8 @@ defineProps({
   }
 })
 
-const secondsToComplete = ref(0)
-
 const emit = defineEmits({
+  secondsToComplete: isNumber,
   delete: isUndefined
 })
 </script>

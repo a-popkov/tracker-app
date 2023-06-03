@@ -56,7 +56,7 @@ function isBetween (value, start, end) {
   return value >= start && value <= end
 }
 
-function isNumber (value) {
+export function isNumber (value) {
   return typeof value === 'number'
 }
 
